@@ -1,0 +1,17 @@
+{
+  "name": "travel-distance-to-stuff-thingy",
+  "version": "0.0.1",
+  "description": "Hur långt är ett snöre?",
+  "main": "index.js",
+  "author": "Andreas Bernacca",
+  "license": "MIT",
+  "keywords": [
+    "booli",
+    "google distance matrix"
+  ],
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "node-fetch": "^1.5.3",
+    "rsvp": "^3.2.1"
+  }
+}
