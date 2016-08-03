@@ -10,6 +10,7 @@
     "google distance matrix"
   ],
   "dependencies": {
+    "booli-api": "0.0.1",
     "cheerio": "^0.20.0",
     "node-fetch": "^1.5.3",
     "rsvp": "^3.2.1"
