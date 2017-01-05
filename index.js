@@ -61,6 +61,6 @@ var getDataz = async(function() {
 })
 
 getDataz().then((items) => {
-  items = _.orderBy(items, (i) => i.duration.value, 'desc')
+  items = _.orderBy(items, (i) => i.seconds, 'desc')
   console.log(items)
 })
