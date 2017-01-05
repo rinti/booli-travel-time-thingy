@@ -12,13 +12,6 @@ const DESTINATION = process.env.DESTINATION
 
 booli = new Booli(BOOLI_CALLER_ID, BOOLI_API_KEY)
 
-const textToMinutes = (text) => {
-  let hours = text.match(/(\d+) hour/)
-  hours = hours ? hours[1] : 0
-  const mins = text.match(/(\d+) min/)[1]
-  return (parseInt(hours, 10) * 60) + parseInt(mins, 10)
-}
-
 var getDistanceAndTime = async(function(lat, lng) {
   var url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&mode=transit&origins="
     + encodeURIComponent(lat)
