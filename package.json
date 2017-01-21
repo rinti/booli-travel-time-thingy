@@ -12,6 +12,9 @@
   "dependencies": {
     "asyncawait": "^1.0.6",
     "booli-api": "0.0.1",
+    "hapi": "^16.1.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.7.6",
     "node-fetch": "^1.5.3"
   }
 }

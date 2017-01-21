@@ -2,6 +2,12 @@ const _ = require("lodash")
 const fetch = require("node-fetch")
 const Booli = require("booli-api")
 
+var mongoose = require('mongoose')
+const booliSchema = require('./schema')
+mongoose.connect('mongodb://localhost/test')
+
+var booliItem = mongoose.model('Booli', booliSchema)
+
 const async = require('asyncawait/async')
 const await = require('asyncawait/await')
 
@@ -54,6 +60,19 @@ var getDataz = async(function() {
 })
 
 getDataz().then((items) => {
-  items = _.orderBy(items, (i) => i.seconds, 'desc')
-  console.log(items)
+  items.forEach((item) => {
+    var i = new booliItem(item);
+    i.save(function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('saved item');
+      }
+    });
+  })
+  booliItem.find(function(err, items) {
+    console.log(err, items)
+  })
+  // items = _.orderBy(items, (i) => i.seconds, 'desc')
+  // console.log(items)
 })
