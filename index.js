@@ -43,7 +43,7 @@ const search_params = {
   limit: 3
 }
 
-var getDataz = async function() {
+const fetchData = async function() {
   let listings = await booli.listings(search_params)
   let res = await listings.json()
   let counter = 0
@@ -59,7 +59,7 @@ var getDataz = async function() {
   return items
 }
 
-getDataz().then((items) => {
+fetchData().then((items) => {
   items.forEach((item) => {
     var i = new booliItem(item);
     i.save(function (err) {
