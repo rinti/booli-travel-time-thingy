@@ -60,8 +60,8 @@ const fetchData = async function() {
   return items
 }
 
-fetchData().then((items) => {
-  items.forEach((item) => {
+fetchData().then(async function(items) {
+  await items.forEach((item) => {
     var i = new booliItem(item);
     i.save(function (err) {
       if (err) {
@@ -71,9 +71,12 @@ fetchData().then((items) => {
       }
     });
   })
-  booliItem.find(function(err, items) {
+  await booliItem.find(function(err, items) {
     console.log(err, items)
   })
+
+  mongoose.disconnect()
   // items = _.orderBy(items, (i) => i.seconds, 'desc')
   // console.log(items)
 })
+
