@@ -16,16 +16,16 @@ const BOOLI_API_KEY = process.env.BOOLI_API_KEY
 const BOOLI_CALLER_ID = process.env.BOOLI_CALLER_ID
 const DESTINATION = process.env.DESTINATION
 
+const GOOGLE_API_BASE_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&mode=transit'
+
 booli = new Booli(BOOLI_CALLER_ID, BOOLI_API_KEY)
 
 var getDistanceAndTime = async function(lat, lng) {
-  var url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&mode=transit&origins="
-    + encodeURIComponent(lat)
-    + ","
-    + encodeURIComponent(lng)
-    + "&destinations="
-    + encodeURIComponent(DESTINATION)
-    + "&key=" + GOOGLE_KEY
+  lat = encodeURIComponent(lat)
+  lng = encodeURIComponent(lng)
+  const dest = encodeURIComponent(DESTINATION)
+  const url = `${GOOGLE_API_BASE_URL}&origins=${lat},${lng}&destinations=${DESTINATION}&key=${GOOGLE_KEY}`
+
   try {
     let response = await fetch(url)
     return await response.json()
