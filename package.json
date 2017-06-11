@@ -12,6 +12,7 @@
   "dependencies": {
     "booli-api": "0.0.2",
     "dotenv": "^4.0.0",
+    "hapi": "^16.4.3",
     "lodash": "^4.17.4",
     "mongoose": "^4.7.6",
     "node-fetch": "^1.5.3"
