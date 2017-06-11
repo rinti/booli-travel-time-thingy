@@ -54,10 +54,9 @@ const mapItem = async function(item) {
 }
 
 const fetchData = async function() {
-  let listings = await booli.listings(search_params)
-  let res = await listings.json()
-  let counter = 0
-  let items = await res.listings.map(mapItem)
+  const listings = await booli.listings(search_params)
+  const res = await listings.json()
+  const items = await res.listings.map(mapItem)
   return items
 }
 
