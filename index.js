@@ -49,8 +49,6 @@ var getDataz = async function() {
   let counter = 0
   let items = await res.listings.map(async function(item) {
     let dist = await getDistanceAndTime(item.location.position.latitude, item.location.position.longitude)
-    console.log("----------------------------")
-    console.log(dist)
     let d = dist.rows[0].elements[0]
     return {
       meters: d.distance.value,
