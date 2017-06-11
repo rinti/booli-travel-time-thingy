@@ -17,4 +17,8 @@ BOOLI_API_KEY=booli-api-key
 DESTINATION=Centralplan 15, 111 20 Stockholm
 ```
 
+There's also an API server included:
+  - node server.js
+  - open localhost:3333/items/
+
 MIT licence
