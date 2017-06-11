@@ -43,11 +43,7 @@ const search_params = {
   limit: 3
 }
 
-const fetchData = async function() {
-  let listings = await booli.listings(search_params)
-  let res = await listings.json()
-  let counter = 0
-  let items = await res.listings.map(async function(item) {
+const mapItem = async function(item) {
     let dist = await getDistanceAndTime(item.location.position.latitude, item.location.position.longitude)
     let d = dist.rows[0].elements[0]
     return {
@@ -55,7 +51,13 @@ const fetchData = async function() {
       seconds: d.duration.value,
       item
     }
-  })
+}
+
+const fetchData = async function() {
+  let listings = await booli.listings(search_params)
+  let res = await listings.json()
+  let counter = 0
+  let items = await res.listings.map(mapItem)
   return items
 }
 
