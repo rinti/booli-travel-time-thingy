@@ -5,6 +5,7 @@ let Schema = mongoose.Schema;
 const itemSchema = new Schema({
   seconds: Number,
   meters: Number,
+  interested: { type: Boolean, default: true },
   item: {
     booliId: Number,
     listPrice: Number,

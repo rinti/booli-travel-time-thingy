@@ -12,6 +12,22 @@ const server = new Hapi.Server();
 server.connection({ port: 3333, routes: { cors: true }});
 
 server.route({
+    method: 'PUT',
+    path: '/items/toggleInterest/',
+    handler: function (request, reply) {
+      booliItem.findById(request.query.id, function(err, item) {
+          if(err) { reply('Boo!') }
+
+          item.interested = !item.interested;
+          item.save(function(err, updatedItem) {
+              if(err) { reply('Boohoo!') }
+              reply(updatedItem)
+          })
+      })
+    }
+});
+
+server.route({
     method: 'GET',
     path: '/items/',
     handler: function (request, reply) {
