@@ -6,6 +6,7 @@ const itemSchema = new Schema({
   seconds: Number,
   meters: Number,
   interested: { type: Boolean, default: true },
+  showings: [Date],
   item: {
     booliId: Number,
     listPrice: Number,

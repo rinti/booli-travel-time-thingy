@@ -40,7 +40,7 @@ const search_params = {
   maxListPrice: 2400000,
   maxRent: 3000,
   minLivingArea: 25,
-  limit: 3
+  limit: 25 
 }
 
 const fetchData = async function() {
