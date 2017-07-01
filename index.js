@@ -50,6 +50,15 @@ const fetchData = async function() {
 
   for (var i = 0; i < res.listings.length; i++) {
     const item = res.listings[i];
+
+    let itemExists = Boolean(
+      await booliItem.findOne({'item.booliId': item.booliId})
+    )
+    if(itemExists) {
+      console.log('Skipping..')
+      continue;
+    }
+
     let dist = await getDistanceAndTime(item.location.position.latitude, item.location.position.longitude)
     let d = dist.rows[0].elements[0]
     obj = {
@@ -74,12 +83,7 @@ fetchData().then(async function(items) {
       }
     });
   })
-  await booliItem.find(function(err, items) {
-    console.log(err, items)
-  })
 
   mongoose.disconnect()
-  // items = _.orderBy(items, (i) => i.seconds, 'desc')
-  // console.log(items)
 })
 
